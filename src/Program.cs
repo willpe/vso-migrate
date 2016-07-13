@@ -16,16 +16,16 @@
 
         private static async Task MainAsync()
         {
-            const string sourceProjectName = "Developer Extensibility";
-            const string targetProjectName = "BTS";
+            const string sourceProjectName = "From";
+            const string targetProjectName = "To";
 
-            var accountUri = new Uri("https://dynamicscrm.visualstudio.com/defaultcollection");
+            var accountUri = new Uri("https://example.visualstudio.com/defaultcollection");
             var connection = new VssConnection(accountUri, new VssClientCredentials());
             var sourceProject = await FindProjectAsync(connection, sourceProjectName);
             var targetProject = await FindProjectAsync(connection, targetProjectName);
 
-            const string sourceBuildDefinitionName = "Sync2 Continuous Integration";
-            const string targetBuildDefinitionName = "Sync Continuous Integration";
+            const string sourceBuildDefinitionName = "My Build";
+            const string targetBuildDefinitionName = "My Build - Clone";
             await CopyBuildDefinitionAsync(connection, sourceProject, targetProject, sourceBuildDefinitionName, targetBuildDefinitionName);
         }
 
